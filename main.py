@@ -22,6 +22,21 @@ class Movie:
         '''Tells you what movie picked'''
         return f"You chose the movie {self.name}, which has a score of {self.movie_score()} "
 
+    def __repr__(self):
+        return f"Movie({self.name}, {self.positive_reviews}, {self.total_reviews})"
+
+    def __str__(self):
+        return f"{self.name} ({self.total_reviews}), having {self.positive_reviews} positive reviews"
+
+    def __eq__(self, other):
+        return self.positive_reviews == other.positive_reviews
+
+    def __lt__(self, other):
+        return self.positive_reviews < other.positive_reviews
+
+    def __gt__(self, other):
+        return self.positive_reviews > other.positive_reviews
+
 class Runtime(Movie):
     """The runtime of any movie"""
     def __init__(self, name, runtime):
@@ -80,3 +95,15 @@ if __name__ == "__main__":
     Avatar = BoxOffice("Avatar", 2923706026)
     print(Avatar.calculate_box_office())
     print(Avatar.give_summary())
+
+    print(repr(Titanic))
+
+    print(str(Titanic))
+
+    print(repr(Avatar))
+
+    print(str(Avatar))
+
+    print(Titanic == Avatar)
+    print(Titanic < Avatar)
+    print(Titanic > Avatar)
